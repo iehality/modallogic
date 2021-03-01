@@ -22,5 +22,4 @@ infix ` ↔ₘ `:60 := formula.iff
 def formula.dia (p : formula) : formula := ¬ₘ□¬ₘp
 prefix `◇`:70 := formula.dia
 
-instance nat_to_formula : has_coe ℕ formula :=
-⟨formula.var⟩
+instance nat_to_formula : has_coe ℕ formula := ⟨formula.var⟩
