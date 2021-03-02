@@ -29,28 +29,32 @@ def frames {W : Type u} (F : kripke_frame W) (p : formula) := ∀ V w, satisfy F
 notation `[`F`, `V`, `w`]` ` ⊧ `p := satisfy F V w p
 infix ` ⊧ `:50 := frames
 
+
+namespace semantics
+
 variable {W : Type u}
-variable {F : kripke_frame W}
-variables p q : ℕ
+variable F : kripke_frame W
+variables φ ψ : formula
 local infix ` ≺ `:50 := F.relation
 
-theorem distribution : F ⊧ □(p →ₘ q) →ₘ □p →ₘ □q :=
+theorem distribution : F ⊧ □(φ →ₘ ψ) →ₘ □φ →ₘ □ψ :=
 λ (V : ℕ → set W)
   (w : W)
-  (h₀ : [F, V, w] ⊧ □(p →ₘ q))
-  (h₁ : [F, V, w] ⊧ □p)
+  (h₀ : [F, V, w] ⊧ □(φ →ₘ ψ))
+  (h₁ : [F, V, w] ⊧ □φ)
   (v : W)
   (h₂ : w ≺ v),
 h₀ v h₂ (h₁ v h₂)
 
-theorem necessitation : F ⊧ p → F ⊧ □p :=
-λ (h₀ : F ⊧ p)
+theorem necessitation : F ⊧ φ → F ⊧ □φ :=
+λ (h₀ : F ⊧ φ)
   (V : ℕ → set W)
   (w : W)
   (v : W)
   (h₁ : w ≺ v),
 h₀ V v
 
+variable p : ℕ
 theorem trans_iff_4
   : rel.transitive F ↔ F ⊧ □p →ₘ □□p :=
 begin
@@ -69,3 +73,5 @@ begin
       sorry },
     sorry }
 end
+
+end semantics
