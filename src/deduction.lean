@@ -16,7 +16,8 @@ inductive prv (Γ : set formula) : set formula
 | an {φ ψ}   : prv ((¬ₘφ →ₘ ¬ₘψ) →ₘ ψ →ₘ φ)
 | k {φ ψ}    : prv (□(φ →ₘ ψ) →ₘ □φ →ₘ □ψ)
 notation `𝐊` := prv
-infix ` ⊢ₖ `:55 := prv
+prefix `⊢ₖ`:55 := prv ∅
+infix ` ⊢ `:55 := prv
 
 def consistent (Γ : set formula) : Prop := ⊥ₘ ∉ 𝐊 Γ
 

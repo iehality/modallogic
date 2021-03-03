@@ -1,2 +1,2 @@
 # modallogic
-Formalizing Modal Logic in Lean. 
+Formalizing modal logic in Lean. 

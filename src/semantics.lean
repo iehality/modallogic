@@ -104,7 +104,7 @@ lemma as_soundness : F ⊧ (φ →ₘ ψ →ₘ χ) →ₘ (φ →ₘ ψ) →ₘ
 
 lemma an_soundness : F ⊧ (¬ₘφ →ₘ ¬ₘψ) →ₘ ψ →ₘ φ := by { intros V w h, simp [satisfy], contrapose, exact h }
 
-theorem soundness : ∅ ⊢ₖ φ → F ⊧ φ :=
+theorem soundness : ⊢ₖ φ → F ⊧ φ :=
 begin
   assume h,
   induction h,
